@@ -153,7 +153,6 @@ prometheus-client==0.14.1
 prompt-toolkit==3.0.31
 protobuf==3.19.6
 psutil==5.9.2
-psycopg2==2.9.3
 pure-eval==0.2.2
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
