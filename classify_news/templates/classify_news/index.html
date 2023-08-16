@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+    <div>
+
+        </div>
+        <div class="newsletter8 py-5">
+        <div class="container">
+        <div class="row">
+          <!-- column  -->
+          <div class="col-lg-5">
+            <h6 class="text-themecolor font-weight-normal text-uppercase">newsletter</h6>
+            <h4 class="my-3">Stay informed about new and upcoming markets</h4>
+            <h6 class="subtitle mt-3 font-weight-normal">The objective of the phrase level annotation task was to classify each sentence into a positive,
+        negative or neutral category by considering only the information explicitly available in the given sentence.</h6>
+{#            <h6 class="text-themecolor font-weight-normal text-uppercase">newsletter</h6>#}
+{#            <h4 class="my-3">Stay informed about new and upcoming causes</h4>#}
+            <h6 class="subtitle mt-3 font-weight-normal">Since the study is focused only on financial and economic domains, the model used was only considering the
+        sentences from the view point of an investor only; i.e. whether the news may have positive, negative or neutral
+        influence on the stock price.</h6>
+{#            <h6 class="text-themecolor font-weight-normal text-uppercase">newsletter</h6>#}
+{#            <h4 class="my-3">Stay informed about new and upcoming causes</h4>#}
+            <h6 class="subtitle mt-3 font-weight-normal">All the news displayed here was scraped from the Financial Times website.</h6>
+
+          </div>
+
+
+          <!-- column  -->
+          <div class="col-lg-6 ml-auto">
+            <div class="d-block d-md-flex border-bottom pb-3 text-uppercase">
+              <h6 class="no-shrink font-weight-medium align-self-center m-b-0">Latest News</h6>
+              <a class="ml-auto text-danger align-self-center text-decoration-none" href="#">View All</a>
+            </div>
+            <div class="row blog-row mt-4 mb-3">
+              <div class="col-md-4">
+                <a href="#"><img src="{{ cn1.news.image }}" alt="wrapkit" class="img-fluid" /></a>
+              </div>
+              <div class="col-md-8">
+                <h5><a href="#" class="text-decoration-none">{{ cn1.news.text }}</a></h5>
+                <p>from <a href="#" class="text-decoration-none">{{ cn1.news.source }}</a> / {{ cn1.accuracy_percentage }}% {{ cn1.sentiment_text }}</p>
+              </div>
+            </div>
+            <div class="row blog-row my-3">
+              <div class="col-md-4">
+                <a href="#"><img src="{{ cn2.news.image }}" alt="wrapkit" class="img-fluid" /></a>
+              </div>
+              <div class="col-md-8">
+                <h5><a href="#" class="text-decoration-none">{{ cn2.news.text }}</a></h5>
+                <p>from <a href="#" class="text-decoration-none">{{ cn2.news.source }}</a> / {{ cn2.accuracy_percentage }}% {{ cn2.sentiment_text }}</p>
+              </div>
+            </div>
+            <div class="row blog-row my-3">
+              <div class="col-md-4">
+                <a href="#"><img src="{{ cn3.news.image }}" alt="wrapkit" class="img-fluid" /></a>
+              </div>
+              <div class="col-md-8">
+                <h5><a href="#" class="text-decoration-none">{{ cn3.news.text }}</a></h5>
+                <p>from <a href="#" class="text-decoration-none">{{ cn3.news.source }}</a> / {{ cn3.accuracy_percentage }}% {{ cn3.sentiment_text }}</p>
+              </div>
+            </div>
+          </div>
+          <!-- column  -->
+        </div>
+        </div>
+        </div>
+        <div class="container py-4 py-xl-5">
+            <div class="row mb-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2>Classification</h2>
+                    <p>"90% Positive" means the model's prediction of the news article is strongly correct.</p>
+                </div>
+            </div>
+            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+                {% for news in classified_news %}
+                <div class="col">
+                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="{{ news.news.image }}">
+                        <div class="card-body p-4">
+                            <p class="text-primary card-text mb-0">{{ news.news.source }}</p>
+                            <h4 class="card-title">{{ news.news.text }}</h4>
+{#                            {% for name in named_entity_recognition %}#}
+{#                                {% if name.news.id == news.news.id %}#}
+{#                                    <p class="card-text">{{ name.entity }} | {{ name.label }} | {{ name.explanation }}</p>#}
+{#                                {% endif %}#}
+{##}
+{##}
+{#                            {% endfor %}#}
+                                <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="{{ news.news.image }}">
+                                <div>
+                                    <p class="fw-bold mb-0">{{ news.sentiment_text }}</p>
+                                    <p class="text-muted mb-0">{{ news.accuracy_percentage }}%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+{% endblock content %}

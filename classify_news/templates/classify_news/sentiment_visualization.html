@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Sentiment Analytics{% endblock title %}
+{% block content %}
+    <div>
+        <canvas id="myChart" width="400" height="100"></canvas>
+    </div>
+{% endblock content %}
+{% block scripts %}
+    <script>
+        let heading = document.querySelector('.sentiment-analysis-heading');
+        let text = document.querySelector('.sentiment-analysis-text');
+        let footer = document.querySelector('.footer-tingz');
+        footer.classList.add('d-none');
+        heading.innerHTML = "Sentiment Analytics";
+        text.innerHTML = "Visualization of classified financial news sentiment.";
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                labels: [{% for name in sentiment_names %}'{{ name }}',{% endfor %}],
+                datasets: [{
+                    label: 'Count',
+                    data: [{% for val in sentiment_values %}{{ val }},{% endfor %}],
+                    borderWidth: 1
+                }]
+                },
+                options: {
+                scales: {
+                    y: {
+                    beginAtZero: true
+                    }
+                }
+                }
+            });
+    </script>
+{% endblock scripts %}

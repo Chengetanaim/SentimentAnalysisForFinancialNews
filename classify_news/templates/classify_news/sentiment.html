@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}{{ sentiment.sentiment }}{% endblock title %}
+{% block content %}
+{#    {% for news in classified_news %}#}
+{#        <img src="{{ news.news.image }}">#}
+{#        <h4><a href="{{ news.news.link }}">{{ news.news.text }}</a></h4>#}
+{#        <h5>{{ news.news.source }}</h5>#}
+{#        <b>{{ news.sentiment_text }}</b>#}
+{#        <p><i>{{ news.accuracy_percentage }}%</i></p>#}
+{#        <p>Labels:</p>#}
+{#        {% for name in named_entity_recognition %}#}
+{#            {% if name.news.id == news.news.id %}#}
+{#                <p>{{ name.entity }} | {{ name.label }} | {{ name.explanation }}</p>#}
+{#            {% endif %}#}
+{##}
+{#        {% empty %}#}
+{#            <li>No Named Entity Recognition</li>#}
+{#        {% endfor %}#}
+{#        <hr>#}
+{#    {% empty %}#}
+{#        <li>No news articles</li>#}
+{#    {% endfor %}#}
+    <div class="container py-4 py-xl-5">
+            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+                {% for news in classified_news %}
+                <div class="col">
+                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="{{ news.news.image }}">
+                        <div class="card-body p-4">
+                            <p class="text-primary card-text mb-0">{{ news.news.source }}</p>
+                            <h4 class="card-title">{{ news.news.text }}</h4>
+{#                            {% for name in named_entity_recognition %}#}
+{#                                {% if name.news.id == news.news.id %}#}
+{#                                    <p class="card-text">{{ name.entity }} | {{ name.label }} | {{ name.explanation }}</p>#}
+{#                                {% endif %}#}
+{##}
+{##}
+{#                            {% endfor %}#}
+                                <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="{{ news.news.image }}">
+                                <div>
+                                    <p class="fw-bold mb-0">{{ news.sentiment_text }}</p>
+                                    <p class="text-muted mb-0">{{ news.accuracy_percentage }}%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                    <li>No {{ sentiment.sentiment }} news.</li>
+                {% endfor %}
+            </div>
+        </div>
+{% endblock content %}
