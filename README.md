@@ -1,6 +1,6 @@
 # SentimentAnalysisForFinancialNews
 This is a Django application for predicting whether the sentiment of a financial news headline is positive, negative or neutral.<br>
-This project didn't focus on model building, the project for building the model is here - <br>
+This project didn't focus on model building, the project for building the model is here - https://github.com/Chengetanaim/SentimentAnalysisForFinancialNewsNotebook<br>
 Web scraping tools were used to scrape financial data from the Financial Times website.
 
 # What I Did/Learnt:
